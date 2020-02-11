@@ -1,0 +1,35 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>The HTML5 Herald</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+    <button onclick="testRequest()">TEXT</button>
+
+</head>
+
+<body>
+<h>HEllo world</h>
+
+<script>
+    async function testRequest() {
+        let response = await fetch('/test-2');
+
+        if (response.ok) { // если HTTP-статус в диапазоне 200-299
+            // получаем тело ответа (см. про этот метод ниже)
+            let json = await response.json();
+            alert("Json: " + json);
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+    }
+
+</script>
+</body>
+</html>
