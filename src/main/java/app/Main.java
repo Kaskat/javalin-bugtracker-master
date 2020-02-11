@@ -21,6 +21,11 @@ public class Main {
             config.addStaticFiles("/public");
             config.registerPlugin(new RouteOverviewPlugin("/routes"));
         }).start(7070);
+
+        app.routes(() -> {
+            get(Path.Web.ISSUES, IssueController.fetchAllIssue);
+            get(Path.Web.ONE_ISSUE, IssueController.fetchIssueByID);
+        });
     }
 
 }
