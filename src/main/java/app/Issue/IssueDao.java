@@ -25,13 +25,13 @@ public class IssueDao {
 
                 String issueId = resultSet.getString("issue_id");
                 String number = resultSet.getString("number");
-                String name = resultSet.getString("name");
+                String summary = resultSet.getString("summary");
 
-                if(number == null && name == null)// bad way
+                if(number == null && summary == null)// bad way
                     continue;
 
-                tempIssue.setIssueId(issueId);
-                tempIssue.setName(name);
+                tempIssue.setId(issueId);
+                tempIssue.setSummary(summary);
                 tempIssue.setNumber(number);
 
                 issues.add(tempIssue);
@@ -61,5 +61,65 @@ public class IssueDao {
         }
 
         return issues.get(0);
+    }
+
+    public static void addIssue
+            (
+                    String summary,
+                    String description,
+                    String priorityId,
+                    String statusId,
+                    String projectId,
+                    String assigneId
+            )
+    {
+        Statement stmt = null;
+        try
+        {
+            stmt = PostgreConnector.connection.createStatement();
+            stmt.executeUpdate(INSERT_ISSUE_PARAMS(summary, description, priorityId, statusId, projectId, assigneId));
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void updateIssue
+            (
+                    String id,
+                    String summary,
+                    String description,
+                    String priorityId,
+                    String statusId,
+                    String projectId,
+                    String assigneId
+            )
+    {
+        Statement stmt = null;
+        try
+        {
+            stmt = PostgreConnector.connection.createStatement();
+            stmt.executeUpdate(UPDATE_ISSUE_BY_ID(id, summary, description, priorityId, statusId, projectId, assigneId));
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void deleteIssue(String id)
+    {
+        Statement stmt = null;
+        ResultSet resultSet = null;
+        try
+        {
+            stmt = PostgreConnector.connection.createStatement();
+            stmt.executeUpdate(DELETE_ISSUE_BY_ID(id));
+        }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
     }
 }
