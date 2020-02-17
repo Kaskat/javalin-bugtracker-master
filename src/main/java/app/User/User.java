@@ -10,6 +10,13 @@ public class User {
 
     }
 
+    public User(String userId, String name, String lastName, String loginName) {
+        this.name = name;
+        this.userId = userId;
+        this.lastName = lastName;
+        this.loginName = loginName;
+    }
+
     public String getName() {
         return name;
     }

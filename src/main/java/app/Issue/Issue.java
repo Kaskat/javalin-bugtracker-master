@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.*;
 
@@ -136,7 +137,6 @@ public class Issue {
     public Issue (
             String statusId,
             String priorityId,
-            String issueId,
             String summary,
             String description,
             String assigneId,
@@ -166,6 +166,28 @@ public class Issue {
 
     public Issue (int projectId) {
         this.projectId = String.valueOf(projectId);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Issue issue = (Issue) o;
+        return Objects.equals(id, issue.id) &&
+                Objects.equals(statusId, issue.statusId) &&
+                Objects.equals(priorityId, issue.priorityId) &&
+                Objects.equals(number, issue.number) &&
+                Objects.equals(summary, issue.summary) &&
+                Objects.equals(description, issue.description) &&
+                Objects.equals(assigneId, issue.assigneId) &&
+                Objects.equals(projectId, issue.projectId) &&
+                Objects.equals(project, issue.project) &&
+                Objects.equals(assignee, issue.assignee);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, statusId, priorityId, number, summary, description, assigneId, projectId, project, assignee);
     }
 
     @Override

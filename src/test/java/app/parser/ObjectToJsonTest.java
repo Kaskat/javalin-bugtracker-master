@@ -10,17 +10,17 @@ import java.io.File;
 import java.io.IOException;
 
 public class ObjectToJsonTest {
-    public IssueList setIssueList() {
+    public static IssueList setIssueList() {
         IssueList expected = new IssueList();
 
-        Issue iss1 = new Issue(1,1,"0001", "name", "summary",
+        /*Issue iss1 = new Issue(1,1,"0001", "name", "summary",
                 "description", "assignee", "project");
         Issue iss2 = new Issue(2,2,"0002", "name2", "summary2",
                 "description2", "assignee2", "project2");
 
         expected.addToIssues(iss1);
         expected.addToIssues(iss2);
-
+*/
         return expected;
     }
 

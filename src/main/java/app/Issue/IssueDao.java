@@ -1,6 +1,8 @@
 package app.Issue;
 
 import app.DB.PostgreConnector;
+import app.DB.Query;
+import app.Project.Project;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -83,6 +85,26 @@ public class IssueDao {
         {
             ex.printStackTrace();
         }
+    }
+
+    //for unit test
+    public Issue selectIssue(String summary, Project project)
+    {
+        ArrayList<Issue> issues = new ArrayList<Issue>();
+        try {
+            Statement stmt = PostgreConnector.connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery(Query.SELECT_ALL_INFO_ISSUES + "where summary = \'" + summary + "\' and project_id = \'" + project.getProjectId() + "\';");
+
+            while (resultSet.next())
+            {
+                issues.add(new Issue(resultSet));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return issues.get(0);
     }
 
     public static void updateIssue
