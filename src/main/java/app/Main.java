@@ -13,10 +13,13 @@ import app.Type.TypeController;
 import app.Type.TypeDao;
 import app.User.UserController;
 import app.User.UserDao;
+import app.Util.Configuration;
 import app.Util.Path;
 import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
 
+
+import java.util.Properties;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
@@ -33,10 +36,14 @@ public class Main {
     public static PostgreConnector db = new PostgreConnector();
 
     public static void main(String[] args) {
+        Properties properties = new Configuration("src/main/resources/config/configuration.yml").getProperties();
+        int port = Integer.parseInt(properties.getProperty("port"));
         Javalin app = Javalin.create(config -> {
             config.addStaticFiles("/public");
             config.registerPlugin(new RouteOverviewPlugin("/routes"));
-        }).start(7070);
+        }).start(port);
+
+
 
         app.routes(() -> {
             get(Path.Web.ISSUE, IssueController.fetchAllIssue);
