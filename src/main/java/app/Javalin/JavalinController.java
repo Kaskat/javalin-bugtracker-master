@@ -18,10 +18,10 @@ import app.Util.Filters;
 import app.Util.Path;
 import io.javalin.Javalin;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
-import static io.javalin.apibuilder.ApiBuilder.get;
 
 public class JavalinController {
 

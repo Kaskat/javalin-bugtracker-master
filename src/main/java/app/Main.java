@@ -13,8 +13,6 @@ import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class Main {
     public static void main(String[] args) {
-        Properties properties = new Configuration("src/main/resources/config/configuration.yml").getProperties();
-        int port = Integer.parseInt(properties.getProperty("port"));
         Javalin app = Javalin.create(config -> {
             config.addStaticFiles("/public");
             config.registerPlugin(new RouteOverviewPlugin("/routes"));

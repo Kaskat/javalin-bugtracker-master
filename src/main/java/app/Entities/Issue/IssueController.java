@@ -3,13 +3,18 @@ package app.Entities.Issue;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.http.Handler;
 
+import java.util.ArrayList;
+
 import static app.Javalin.JavalinController.issueDao;
 import static app.Main.*;
 
 public class IssueController {
 
     public static Handler fetchAllIssue = ctx -> {
-        ctx.json(issueDao.getTableIssue());
+        ArrayList<Issue> d = issueDao.getTableIssue();
+        if (d.size() > 0)        ctx.json(d);
+        else ctx.status(303);
+
     };
 
     public static Handler fetchIssueByID = ctx -> {
