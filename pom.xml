@@ -125,7 +125,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>app.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -140,7 +140,7 @@
                     <appName>javalin-html-forms-example</appName>
                     <processTypes>
                         <!-- Tell Heroku how to launch your application -->
-                        <web>java -jar ./target/javalin-html-forms-example-1.0-SNAPSHOT.jar</web>
+                        <web>java -jar ./target/javalin-html-forms-example-1.0-SNAPSHOT-jar-with-dependencies.jar</web>
                     </processTypes>
                 </configuration>
             </plugin>
