@@ -1,6 +1,7 @@
 package app;
 
 import app.Javalin.JavalinController;
+import app.Util.Configuration;
 import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
 
