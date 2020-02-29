@@ -140,7 +140,7 @@
                     <appName>javalin-html-forms-example</appName>
                     <processTypes>
                         <!-- Tell Heroku how to launch your application -->
-                        <web>java -jar ./out/artifacts/javalin_html_forms_example_jar/javalin-html-forms-example.jar</web>
+                        <web>java -jar ./target/javalin-html-forms-example-1.0-SNAPSHOT.jar</web>
                     </processTypes>
                 </configuration>
             </plugin>

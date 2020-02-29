@@ -1,1 +1,1 @@
-web: java -jar ./out/artifacts/javalin_html_forms_example_jar/javalin-html-forms-example.jar
+web java -jar ./target/javalin-html-forms-example-1.0-SNAPSHOT.jar
