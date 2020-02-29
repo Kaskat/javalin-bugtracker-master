@@ -1,6 +1,6 @@
 package app.parser;
 
-import app.Issue.IssueList;
+import app.Entities.Issue.IssueList;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedWriter;

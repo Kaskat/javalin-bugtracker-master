@@ -10,5 +10,7 @@ public class Path {
         public static final String STATUS = "/api/statuses";
         public static final String TYPES = "/api/types";
         public static final String USERS = "/api/users";
+        public static final String LOGIN = "/api/login";
+        public static final String VALIDATION = "/api/validate";
     }
 }

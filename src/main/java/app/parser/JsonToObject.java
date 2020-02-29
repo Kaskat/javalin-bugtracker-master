@@ -1,12 +1,10 @@
 package app.parser;
 
-import app.Issue.IssueList;
+import app.Entities.Issue.IssueList;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 public class JsonToObject {
     public static IssueList parseObject() throws IOException {

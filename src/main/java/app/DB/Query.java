@@ -21,6 +21,9 @@ public class Query {
     public static final String SELECT_TABLE_USERS
             = "select name, user_id from \"BugTracker\".\"User\"";
 
+    public static final String SELECT_USER
+            = "select user_id, login, password from \"BugTracker\".\"User\"";
+
     public static String SELECT_ISSUE_BY_ID(String id)
     {
         return SELECT_ALL_INFO_ISSUES + "where issue_id = '" + id + "'";
@@ -84,7 +87,10 @@ public class Query {
         return deleteBuffer.toString();
     }
 
-
+    public static String SELECT_USER_BY_LOGIN(String login)
+    {
+        return SELECT_USER + "where login = '" + login + "'";
+    }
 
 
 }
