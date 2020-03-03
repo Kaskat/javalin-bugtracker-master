@@ -9,9 +9,16 @@ import java.util.ArrayList;
 
 import static app.DB.Query.SELECT_TABLE_PRIORITY;
 
+/**
+ * Class for access to data of Priority objects
+ */
 public class PriorityDao {
     public static ArrayList<Priority> priority;
 
+    /**
+     * Function to get all priority objects from DB into ArrayList
+     * @return ArrayList of Priority object
+     */
     public static ArrayList<Priority> getPriority()
     {
         priority = new ArrayList<Priority>();

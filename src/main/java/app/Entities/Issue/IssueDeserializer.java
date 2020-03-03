@@ -11,6 +11,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import java.io.IOException;
 
+/**
+ * Issue deserializer class
+ */
 public class IssueDeserializer extends JsonDeserializer<Issue> {
     @Override
     public Issue deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException

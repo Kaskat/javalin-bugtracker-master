@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
 
+/**
+ * Class for connection to DB
+ */
 public class PostgreConnector {
     //Properties properties = new Configuration("src/main/resources/config/configuration.yml").getProperties();
     Properties properties = new Configuration("config/configuration.yml").getProperties();
@@ -31,10 +34,16 @@ public class PostgreConnector {
 
     static public Connection connection;
 
+    /**
+     * Default constructor
+     */
     public PostgreConnector() {
         Init();
     }
 
+    /**
+     * Function for class initialization
+     */
     public void Init() {
         try {
             Class.forName("org.postgresql.Driver");
@@ -46,7 +55,6 @@ public class PostgreConnector {
             connection = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException e) {
             e.printStackTrace();
-            return;
         }
     }
 }

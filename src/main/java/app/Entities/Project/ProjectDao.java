@@ -9,11 +9,17 @@ import java.util.ArrayList;
 
 import static app.DB.Query.SELECT_TABLE_PROJECTS;
 
-
+/**
+ * Class for access to data of Project objects
+ */
 public class ProjectDao {
 
     public static ArrayList<Project> projects;
 
+    /**
+     * Function to get all projects from DB into ArrayList of projects
+     * @return
+     */
     public static ArrayList<Project> getProjects()
     {
         projects = new ArrayList<Project>();
