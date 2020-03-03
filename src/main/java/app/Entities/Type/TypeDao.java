@@ -9,10 +9,17 @@ import java.util.ArrayList;
 
 import static app.DB.Query.SELECT_TABLE_TYPES;
 
+/**
+ * Class for access to data of Type objects
+ */
 public class TypeDao {
 
     public static ArrayList<Type> types;
 
+    /**
+     * Function to get all types from DB into ArrayList of Type objects
+     * @return ArrayList of Type objects
+     */
     public static ArrayList<Type> getTypes()
     {
         types = new ArrayList<Type>();

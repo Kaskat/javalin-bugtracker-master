@@ -9,9 +9,16 @@ import java.util.ArrayList;
 
 import static app.DB.Query.*;
 
+/**
+ * Class for access to data of User objects
+ */
 public class UserDao {
     public static ArrayList<User> users;
 
+    /**
+     * Function to get all users from DB into ArrayList of User objects
+     * @return ArrayList of User objects
+     */
     public static ArrayList<User> getUsers()
     {
         users = new ArrayList<User>();
@@ -40,6 +47,11 @@ public class UserDao {
         return users;
     }
 
+    /**
+     * Function to get user from DB by login into ArrayList of User objects
+     * @param login user's login
+     * @return ArrayList of User objects
+     */
     public static ArrayList<User> getUser(String login)
     {
         users = new ArrayList<User>();
@@ -66,8 +78,6 @@ public class UserDao {
         catch (SQLException e) {
             e.printStackTrace();
         }
-
-
         return users;
     }
 }

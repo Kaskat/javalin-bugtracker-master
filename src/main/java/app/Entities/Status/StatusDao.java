@@ -9,10 +9,17 @@ import java.util.ArrayList;
 
 import static app.DB.Query.SELECT_TABLE_STATUSES;
 
+/**
+ * Class for access to data of Status objects
+ */
 public class StatusDao {
 
     public static ArrayList<Status> statuses;
 
+    /**
+     * Function to get all statuses from DB into ArrayList of Status objects
+     * @return ArrayList of Status objects
+     */
     public static ArrayList<Status> getStatuses()
     {
         statuses = new ArrayList<Status>();

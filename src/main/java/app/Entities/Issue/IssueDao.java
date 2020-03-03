@@ -9,10 +9,17 @@ import java.util.ArrayList;
 
 import static app.DB.Query.*;
 
+/**
+ * Class for access to data of issue objects
+ */
 public class IssueDao {
 
     public static ArrayList<Issue> issues;
 
+    /**
+     * Function to transform data from DB to ArrayList of issues
+     * @return ArrayList of issues
+     */
     public static ArrayList<Issue> getTableIssue()
     {
         issues = new ArrayList<Issue>();
@@ -43,6 +50,11 @@ public class IssueDao {
         return issues;
     }
 
+    /**
+     * Function to get the issue by ID from DB into Issue object
+     * @param id issue's id
+     * @return Issue object
+     */
     public static Issue getIssueByID(String id)
     {
         issues = new ArrayList<Issue>();
@@ -63,6 +75,15 @@ public class IssueDao {
         return issues.get(0);
     }
 
+    /**
+     * Function to add the issue into DB
+     * @param summary issue's summary
+     * @param description issue's description
+     * @param priorityId issue's priorityId
+     * @param statusId issue's statusId
+     * @param projectId issue's projectId
+     * @param assigneeId issue's assigneeId
+     */
     public static void addIssue
             (
                     String summary,
@@ -70,14 +91,14 @@ public class IssueDao {
                     String priorityId,
                     String statusId,
                     String projectId,
-                    String assigneId
+                    String assigneeId
             )
     {
         Statement stmt = null;
         try
         {
             stmt = PostgreConnector.connection.createStatement();
-            stmt.executeUpdate(INSERT_ISSUE_PARAMS(summary, description, priorityId, statusId, projectId, assigneId));
+            stmt.executeUpdate(INSERT_ISSUE_PARAMS(summary, description, priorityId, statusId, projectId, assigneeId));
         }
         catch (SQLException ex)
         {
@@ -85,6 +106,16 @@ public class IssueDao {
         }
     }
 
+    /**
+     * Function to update the issue in DB
+     * @param id issue's ID
+     * @param summary issue's summary
+     * @param description issue's description
+     * @param priorityId issue's priorityId
+     * @param statusId issue's statusId
+     * @param projectId issue's projectId
+     * @param assigneeId issue's assigneeId
+     */
     public static void updateIssue
             (
                     String id,
@@ -93,14 +124,14 @@ public class IssueDao {
                     String priorityId,
                     String statusId,
                     String projectId,
-                    String assigneId
+                    String assigneeId
             )
     {
         Statement stmt = null;
         try
         {
             stmt = PostgreConnector.connection.createStatement();
-            stmt.executeUpdate(UPDATE_ISSUE_BY_ID(id, summary, description, priorityId, statusId, projectId, assigneId));
+            stmt.executeUpdate(UPDATE_ISSUE_BY_ID(id, summary, description, priorityId, statusId, projectId, assigneeId));
         }
         catch (SQLException ex)
         {
@@ -108,6 +139,10 @@ public class IssueDao {
         }
     }
 
+    /**
+     * Function to delete the issue from DB
+     * @param id issue's ID
+     */
     public static void deleteIssue(String id)
     {
         Statement stmt = null;

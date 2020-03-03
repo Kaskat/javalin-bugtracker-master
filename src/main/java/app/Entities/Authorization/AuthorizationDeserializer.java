@@ -12,6 +12,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import java.io.IOException;
 
+/**
+ * Authorization deserializer class
+ */
 public class AuthorizationDeserializer extends JsonDeserializer<Authorization> {
     @Override
     public Authorization deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
