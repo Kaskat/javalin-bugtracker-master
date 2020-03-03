@@ -11,8 +11,9 @@ public class UserProvider {
     public static JWTProvider createHMAC512() {
         JWTGenerator<User> generator = (user, alg) -> {
             JWTCreator.Builder token = JWT.create()
+                    .withClaim("userId", user.getUserId())
                     .withClaim("name", user.getName())
-                    .withClaim("level", user.getLoginName());
+                    .withClaim("roleId", "0"); //user.getRoleId()
             return token.sign(alg);
         };
 

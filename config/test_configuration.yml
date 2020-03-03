@@ -1,0 +1,6 @@
+database_host: "localhost"
+database_port: "5432"
+database_database: "postgres"
+database_user: "postgres"
+database_password: "jenini250"
+port: "5432"

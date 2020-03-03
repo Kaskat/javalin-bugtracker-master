@@ -45,7 +45,6 @@ public class UserDao {
         users = new ArrayList<User>();
         try {
             Statement stmt = PostgreConnector.connection.createStatement();
-//            String d = SELECT_USER_BY_LOGIN(login);
             ResultSet resultSet = stmt.executeQuery(SELECT_USER_BY_LOGIN(login));
 
             while (resultSet.next()) {
@@ -53,12 +52,14 @@ public class UserDao {
 
                 String userId = resultSet.getString("user_id");
                 String password = resultSet.getString("password");
+                String roleId = resultSet.getString("role_id");
 
-                if(password == null && userId == null)// bad way
+                if(password == null && userId == null && roleId == null)// bad way
                     continue;
 
                 tempUser.setUserId(userId);
                 tempUser.setPassword(password);
+                tempUser.setRoleId(roleId);
 
                 users.add(tempUser);
             }

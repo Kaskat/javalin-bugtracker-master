@@ -22,7 +22,10 @@ public class Query {
             = "select name, user_id from \"BugTracker\".\"User\"";
 
     public static final String SELECT_USER
-            = "select user_id, login, password from \"BugTracker\".\"User\"";
+            = "select user_id, login, role_id, password from \"BugTracker\".\"User\"";
+
+    public static final String SELECT_COMMENT
+            = "select text, user_id from \"BugTracker\".\"Comment\"";
 
     public static String SELECT_ISSUE_BY_ID(String id)
     {
@@ -90,6 +93,27 @@ public class Query {
     public static String SELECT_USER_BY_LOGIN(String login)
     {
         return SELECT_USER + "where login = '" + login + "'";
+    }
+
+    public static String SELECT_COMMENT_BY_ISSUE_ID(String id)
+    {
+        return SELECT_COMMENT + "where issue_id = '" + id + "'";
+    }
+
+    public static String INSERT_COMMENT_PARAMS
+            (
+                    String text,
+                    String issueId,
+                    String userId
+            )
+    {
+        StringBuffer insertBuffer = new StringBuffer("INSERT INTO \"BugTracker\".\"Comment\"(text, issue_id, user_id ) VALUES(");
+        insertBuffer
+                .append("\'").append(text).append("\', \'")
+                .append(issueId).append("\', \'")
+                .append(userId).append("\')");
+
+        return  insertBuffer.toString();
     }
 
 

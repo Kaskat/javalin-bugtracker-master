@@ -1,10 +1,15 @@
 package app.Entities.User;
 
+import app.Javalin.Roles;
+import io.javalin.core.security.Role;
+
 public class User {
     String name;
     String userId;
     String lastName;
     String loginName;
+
+    String roleId;
     private String password;
 
     public User(){
@@ -43,11 +48,23 @@ public class User {
         this.loginName = loginName;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role roleGet(){
+        return Roles.values()[Integer.parseInt(getRoleId())];
     }
 }

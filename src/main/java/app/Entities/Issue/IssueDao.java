@@ -32,7 +32,7 @@ public class IssueDao {
 
                 tempIssue.setId(issueId);
                 tempIssue.setSummary(name);
-                tempIssue.setNumber(number);
+                //tempIssue.setNumber(number);
 
                 issues.add(tempIssue);
             }

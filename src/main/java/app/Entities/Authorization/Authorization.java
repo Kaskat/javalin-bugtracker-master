@@ -1,13 +1,16 @@
 package app.Entities.Authorization;
 
+
+import io.javalin.core.security.Role;
+
 import java.util.Objects;
 
 public class Authorization {
     private String login;
-    private String role;
+    private Role role;
 
 
-    public Authorization(String login, String role) {
+    public Authorization(String login, Role role) {
         this.login = login;
         this.role = role;
     }
@@ -17,7 +20,7 @@ public class Authorization {
         return login;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 

@@ -93,6 +93,14 @@
             <artifactId>perfect-hashes</artifactId>
             <version>1.0</version>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.sample</groupId>-->
+<!--            <artifactId>sample</artifactId>-->
+<!--            <version>1.0</version>-->
+<!--            <scope>system</scope>-->
+<!--            <systemPath>C:/GitProjects/javalin-bugtracker-master/config/configuration.yml</systemPath>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>

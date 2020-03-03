@@ -5,20 +5,20 @@ import io.javalin.http.Handler;
 
 import java.util.ArrayList;
 
-import static app.Javalin.JavalinController.issueDao;
-import static app.Main.*;
-
 public class IssueController {
 
     public static Handler fetchAllIssue = ctx -> {
-        ArrayList<Issue> d = issueDao.getTableIssue();
-        if (d.size() > 0)        ctx.json(d);
-        else ctx.status(303);
-
+        try{
+            ArrayList<Issue> d = IssueDao.getTableIssue();
+            if (d.size() > 0)        ctx.json(d);
+        }
+            catch (Exception ex){
+                ctx.result(ex.toString());
+        }
     };
 
     public static Handler fetchIssueByID = ctx -> {
-        ctx.json(issueDao.getIssueByID(ctx.pathParam("id")));
+        ctx.json(IssueDao.getIssueByID(ctx.pathParam("id")));
     };
 
     public static Handler insertIssue = ctx -> {
@@ -27,7 +27,7 @@ public class IssueController {
 
             Issue issue = om.readValue(ctx.body(), Issue.class);
 
-            issueDao.addIssue(
+            IssueDao.addIssue(
                     issue.getSummary(),
                     issue.getDescription(),
                     issue.getPriorityId(),
@@ -47,14 +47,14 @@ public class IssueController {
 
         Issue issue = om.readValue(ctx.body(), Issue.class);
         try{
-            issueDao.updateIssue(
+            IssueDao.updateIssue(
                     ctx.pathParam("id"),
                     issue.getSummary(),
                     issue.getDescription(),
                     issue.getPriorityId(),
                     issue.getStatusId(),
-                    issue.getProjectId(),
-                    issue.getAssigneId()
+                    issue.getProject().getProjectId(),
+                    issue.getAssignee().getUserId()
             );
         } catch (Exception ex){
             ctx.result(ex.toString());
@@ -62,6 +62,6 @@ public class IssueController {
     };
 
     public static Handler deleteIssue = ctx -> {
-        issueDao.deleteIssue(ctx.pathParam("id"));
+        IssueDao.deleteIssue(ctx.pathParam("id"));
     };
 }

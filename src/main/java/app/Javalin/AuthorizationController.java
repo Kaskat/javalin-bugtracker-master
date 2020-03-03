@@ -7,35 +7,28 @@ import app.Entities.User.UserController;
 import app.Entities.User.UserDao;
 import app.Security.JWTProvider;
 import app.Security.JavalinJWT;
-import app.Security.UserProvider;
-import app.Util.Hash;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.http.Handler;
+import javax.servlet.http.Cookie;
 
 import java.util.ArrayList;
 import java.util.Map;
 
+import static app.Javalin.JavalinManager.tokenStorage;
+
 public class AuthorizationController {
-
-    private static Map<String, Authorization> tokenStorage;
-
-    private static JWTProvider provider;
-    private static Handler decodeHandler;
-
-    public AuthorizationController(Map<String, Authorization> tokenStorage) {
-        this.tokenStorage = tokenStorage;
-
-        provider = UserProvider.createHMAC512();
-        decodeHandler = JavalinJWT.createHeaderDecodeHandler(provider);
+    public AuthorizationController() {
     }
 
-    public static Handler validateToken = ctx -> {
+    public static Handler login = ctx -> {
+
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.readTree(ctx.body());
 
         final String login = node.get("login").asText();
-        final String password = new Hash(node.get("password").asText()).getHash();
+//        final String password = new Hash(node.get("password").asText()).getHash();
+        final String password = node.get("password").asText();
 
         if (!login.matches("[\\w-_]{" + login.length() + "}")) {
             ctx.result("Login must contain only [a-z0-9_-].");
@@ -48,29 +41,20 @@ public class AuthorizationController {
         }
 
         ArrayList<User> users = UserDao.getUser(login);
-        int count = users.size();
-        User tempUser = null;
 
-        for (int i = 0; i < count; i++){
-            tempUser = users.get(i);
-
-            if(tempUser.getPassword().equals(password)) {
-                break;
-            }
-            tempUser = null;
-        }
-
-        if(tempUser == null) {
+        if(users == null) {
             ctx.result("You entered incorrect login/password");
             return;
         }
+        User tempUser = users.get(0);
 
-        String token = provider.generateToken(tempUser);
-        ctx.sessionAttribute("token", token);
-        tokenStorage.put(token, new Authorization(login, "Role"));
+        String token = JavalinManager.provider.generateToken(tempUser);
 
-        ctx.result(token);
-        ctx.status(200);
+        JavalinJWT.addTokenToCookie(ctx, token);
+        tokenStorage.put(token, new Authorization(login, tempUser.roleGet()));
+        System.out.println("USER LOGIN AND MUST HAVE COOKIE");
+
+        ctx.json("{ \"ok\": \"true\" }");
     };
 
 //    public static Handler validateToken = ctx -> {

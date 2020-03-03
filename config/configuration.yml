@@ -1,6 +1,6 @@
 database_host: "95.181.178.241"
 database_port: "5432"
-database_database: "eugen"
+database_database: "4eugen"
 database_user: "server"
 database_password: "gEt0Q2sY"
 port: "5432"

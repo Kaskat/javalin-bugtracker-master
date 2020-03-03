@@ -1,25 +1,20 @@
 package app;
 
-import app.Javalin.JavalinController;
-import app.Util.Configuration;
+import app.Javalin.JavalinManager;
 import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
-
-
-import java.util.Properties;
-
-import static io.javalin.apibuilder.ApiBuilder.*;
 
 
 public class Main {
     public static void main(String[] args) {
         Javalin app = Javalin.create(config -> {
             config.addStaticFiles("/public");
-            config.registerPlugin(new RouteOverviewPlugin("/routes"));
+            //config.addStaticFiles("/config");
+            config.enableCorsForOrigin("https://bugtrackerin62front.herokuapp.com");
+            //config.enableCorsForAllOrigins();
         }).start(getHerokuAssignedPort());
 
-        JavalinController jvl = new JavalinController(app);
-        jvl.start();
+        JavalinManager.start(app);
     }
 
     private static int getHerokuAssignedPort() {
@@ -27,7 +22,7 @@ public class Main {
         if (herokuPort != null) {
             return Integer.parseInt(herokuPort);
         }
-        return 7070;
+        return 7071;
     }
 
 }

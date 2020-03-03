@@ -5,7 +5,7 @@ import io.javalin.http.Handler;
 
 import java.util.Map;
 
-import static app.Javalin.JavalinController.tokenStorage;
+import static app.Javalin.JavalinManager.tokenStorage;
 
 public class Filters {
 

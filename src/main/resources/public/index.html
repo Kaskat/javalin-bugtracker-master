@@ -1,40 +1,19 @@
-<h1>Reserve a table at our fancy restaurant</h1>
+<h1>Hello server</h1>
 
-<h2>Make reservation:</h2>
-<form method="post" action="/make-reservation">
-    Choose day
-    <select name="day">
-        <option value="saturday">Saturday</option>
-        <option value="sunday">Sunday</option>
-    </select>
-    <br>
-    Choose time
-    <select name="time">
-        <option value="8:00 PM">8:00 PM</option>
-        <option value="9:00 PM">9:00 PM</option>
-    </select>
-    <br>
-    <button>Submit</button>
-</form>
+<p>ISSUE = "/api/issues";</p>
+<p>ONE_ISSUE = "/api/issues/:id";</p>
+
+<p>PROJECTS = "/api/projects";</p>
+<p>PRIORITY = "/api/priorities";</p>
+<p>STATUS = "/api/statuses";</p>
+<p>TYPES = "/api/types";</p>
+<p>USERS = "/api/users";</p>
+<p>LOGIN = "/api/login";</p>
+<p>VALIDATION = "/api/validate";</p>
+<p><span>GET</span>COMMENT_BY_ISSUE = "/api/comments/:issueId";</p>
+<p><span>POST</span>COMMENT = "/api/comments";</p>
 
 
-<h2>Check your reservation:</h2>
-<form method="get" action="/check-reservation">
-    Choose day
-    <select name="day">
-        <option value="saturday">Saturday</option>
-        <option value="sunday">Sunday</option>
-    </select>
-    <br>
-    <button>Submit</button>
-</form>
-
-
-<h1>Upload example</h1>
-<form method="post" action="/upload-example" enctype="multipart/form-data">
-    <input type="file" name="files" multiple>
-    <button>Submit</button>
-</form>
 
 <style>
     body {
@@ -51,4 +30,22 @@
         margin-top: 1.5em;
         margin-bottom: 5px;
     }
+
+    p{
+        width: fit-content;
+        border: transparent 2px solid;
+        flex-direction: column;
+    }
+
+    p:hover {
+        border: blue 2px solid;
+        border-radius: 4px;
+    }
+
+    span{
+        color: red;
+        display: inline-block;
+        width: 60px;
+    }
+
 </style>

@@ -19,8 +19,8 @@ public class Issue {
     String statusId;
     @JsonInclude(NON_NULL)
     String priorityId;
-    @JsonInclude(NON_NULL)
-    String number;
+//    @JsonInclude(NON_NULL)
+//    String number;
     @JsonInclude(NON_NULL)
     String summary;
     @JsonInclude(NON_NULL)
@@ -115,13 +115,13 @@ public class Issue {
         this.projectId = projectId;
     }
 
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
+//    public String getNumber() {
+//        return number;
+//    }
+//
+//    public void setNumber(String number) {
+//        this.number = number;
+//    }
 
     public Project getProject() {
         return project;
@@ -167,17 +167,17 @@ public class Issue {
         this.projectId = String.valueOf(projectId);
     }
 
-    @Override
-    public String toString() {
-        return "Issue{" +
-                "id='" + id + '\'' +
-                ", statusId='" + statusId + '\'' +
-                ", priorityId='" + priorityId + '\'' +
-                ", number='" + number + '\'' +
-                ", summary='" + summary + '\'' +
-                ", description='" + description + '\'' +
-                ", assigneId='" + assigneId + '\'' +
-                ", projectId='" + projectId + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Issue{" +
+//                "id='" + id + '\'' +
+//                ", statusId='" + statusId + '\'' +
+//                ", priorityId='" + priorityId + '\'' +
+//                ", number='" + number + '\'' +
+//                ", summary='" + summary + '\'' +
+//                ", description='" + description + '\'' +
+//                ", assigneId='" + assigneId + '\'' +
+//                ", projectId='" + projectId + '\'' +
+//                '}';
+//    }
 }
